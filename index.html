@@ -6,7 +6,7 @@
     <title>Poëtische Klok — Paris × Utrecht</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Cormorant+Garamond:ital@1&display=swap');
-        
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
@@ -226,11 +226,11 @@
         .cities { display: flex; gap: 18px; }
         .city { font-size: 9px; color: rgba(34,197,94,0.5); text-transform: uppercase; letter-spacing: 1px; }
         .city span { display: block; font-size: 13px; color: rgba(34,197,94,0.85); margin-top: 3px; }
-        .location { 
-            font-size: 9px; 
-            color: rgba(255,255,255,0.7); 
-            background: rgba(255,255,255,0.15); 
-            padding: 5px 12px; 
+        .location {
+            font-size: 9px;
+            color: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.15);
+            padding: 5px 12px;
             border-radius: 4px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -244,10 +244,9 @@
 <body>
     <div class="device">
         <div class="screen">
-            <!-- Carrousel avec illustrations SVG d'Utrecht -->
             <div class="carousel" id="carousel">
-                
-                <!-- 1. Oudegracht Utrecht - Canaux avec caves -->
+
+                <!-- 1. Oudegracht Utrecht -->
                 <div class="carousel-slide active">
                     <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
                         <defs>
@@ -262,25 +261,19 @@
                             </linearGradient>
                         </defs>
                         <rect fill="url(#sky1)" width="800" height="600"/>
-                        <!-- Canal -->
                         <rect fill="url(#water1)" x="0" y="380" width="800" height="220"/>
-                        <!-- Quais bas (wharves) -->
                         <rect fill="#5d4037" x="0" y="340" width="200" height="60"/>
                         <rect fill="#5d4037" x="600" y="340" width="200" height="60"/>
-                        <!-- Caves voûtées -->
                         <ellipse fill="#3e2723" cx="50" cy="340" rx="35" ry="25"/>
                         <ellipse fill="#3e2723" cx="130" cy="340" rx="35" ry="25"/>
                         <ellipse fill="#3e2723" cx="670" cy="340" rx="35" ry="25"/>
                         <ellipse fill="#3e2723" cx="750" cy="340" rx="35" ry="25"/>
-                        <!-- Maisons gauche -->
                         <rect fill="#e65100" x="20" y="120" width="70" height="220"/>
                         <rect fill="#ff8f00" x="100" y="100" width="80" height="240"/>
                         <rect fill="#c62828" x="190" y="140" width="60" height="200"/>
-                        <!-- Maisons droite -->
                         <rect fill="#ad1457" x="550" y="130" width="75" height="210"/>
                         <rect fill="#6a1b9a" x="635" y="110" width="70" height="230"/>
                         <rect fill="#283593" x="715" y="150" width="85" height="190"/>
-                        <!-- Fenêtres -->
                         <rect fill="#ffecb3" x="35" y="140" width="15" height="20"/>
                         <rect fill="#ffecb3" x="55" y="140" width="15" height="20"/>
                         <rect fill="#ffecb3" x="35" y="180" width="15" height="20"/>
@@ -289,17 +282,13 @@
                         <rect fill="#ffecb3" x="150" y="120" width="18" height="25"/>
                         <rect fill="#ffecb3" x="120" y="160" width="18" height="25"/>
                         <rect fill="#ffecb3" x="150" y="160" width="18" height="25"/>
-                        <!-- Reflets -->
                         <rect fill="rgba(255,255,255,0.1)" x="50" y="400" width="60" height="150"/>
                         <rect fill="rgba(255,255,255,0.1)" x="120" y="420" width="50" height="130"/>
                         <rect fill="rgba(255,255,255,0.08)" x="600" y="400" width="70" height="140"/>
-                        <!-- Pont -->
                         <path fill="#795548" d="M300,360 Q400,300 500,360 L500,380 Q400,320 300,380 Z"/>
-                        <!-- Arbres -->
                         <circle fill="#2e7d32" cx="260" cy="280" r="40"/>
                         <circle fill="#388e3c" cx="280" cy="300" r="35"/>
                         <rect fill="#5d4037" x="268" y="300" width="8" height="40"/>
-                        <!-- Étoiles -->
                         <circle fill="#fff" cx="100" cy="50" r="2"/>
                         <circle fill="#fff" cx="300" cy="30" r="1.5"/>
                         <circle fill="#fff" cx="500" cy="60" r="2"/>
@@ -308,7 +297,7 @@
                     </svg>
                 </div>
 
-                <!-- 2. Domtoren - Tour de la cathédrale -->
+                <!-- 2. Domtoren -->
                 <div class="carousel-slide">
                     <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
                         <defs>
@@ -319,36 +308,26 @@
                             </linearGradient>
                         </defs>
                         <rect fill="url(#sky2)" width="800" height="600"/>
-                        <!-- Sol pavé -->
                         <rect fill="#546e7a" x="0" y="480" width="800" height="120"/>
-                        <!-- Domtoren (112m - plus haute tour des Pays-Bas) -->
                         <rect fill="#d7ccc8" x="340" y="80" width="120" height="400"/>
-                        <!-- Étages de la tour -->
                         <rect fill="#bcaaa4" x="350" y="100" width="100" height="80"/>
                         <rect fill="#a1887f" x="360" y="200" width="80" height="70"/>
                         <rect fill="#8d6e63" x="370" y="290" width="60" height="60"/>
-                        <!-- Flèche -->
                         <polygon fill="#5d4037" points="400,20 370,100 430,100"/>
-                        <!-- Horloge -->
                         <circle fill="#fff8e1" cx="400" cy="140" r="25"/>
                         <line stroke="#3e2723" stroke-width="2" x1="400" y1="140" x2="400" y2="125"/>
                         <line stroke="#3e2723" stroke-width="2" x1="400" y1="140" x2="412" y2="145"/>
-                        <!-- Fenêtres gothiques -->
                         <path fill="#4e342e" d="M380,230 L380,260 Q390,270 400,260 L400,230 Z"/>
                         <path fill="#4e342e" d="M410,230 L410,260 Q420,270 430,260 L430,230 Z"/>
-                        <!-- Bâtiments autour -->
                         <rect fill="#8d6e63" x="50" y="350" width="150" height="130"/>
                         <rect fill="#a1887f" x="220" y="380" width="100" height="100"/>
                         <rect fill="#795548" x="480" y="360" width="120" height="120"/>
                         <rect fill="#6d4c41" x="620" y="340" width="130" height="140"/>
-                        <!-- Toits -->
                         <polygon fill="#d84315" points="50,350 125,300 200,350"/>
                         <polygon fill="#e64a19" points="220,380 270,340 320,380"/>
                         <polygon fill="#bf360c" points="480,360 540,310 600,360"/>
-                        <!-- Arbres du cloître -->
                         <circle fill="#1b5e20" cx="280" cy="440" r="30"/>
                         <circle fill="#2e7d32" cx="520" cy="450" r="25"/>
-                        <!-- Nuages -->
                         <ellipse fill="rgba(255,255,255,0.3)" cx="150" cy="100" rx="60" ry="25"/>
                         <ellipse fill="rgba(255,255,255,0.3)" cx="650" cy="80" rx="70" ry="30"/>
                     </svg>
@@ -369,47 +348,36 @@
                             </linearGradient>
                         </defs>
                         <rect fill="url(#sky3)" width="800" height="600"/>
-                        <!-- Soleil couchant -->
                         <circle fill="#ffeb3b" cx="400" cy="200" r="60"/>
                         <circle fill="#fff59d" cx="400" cy="200" r="45"/>
-                        <!-- Canal -->
                         <rect fill="url(#water3)" x="0" y="400" width="800" height="200"/>
-                        <!-- Quai -->
                         <rect fill="#5d4037" x="0" y="350" width="800" height="50"/>
-                        <!-- Vélos (typique néerlandais) -->
-                        <!-- Vélo 1 -->
                         <circle fill="none" stroke="#212121" stroke-width="3" cx="150" cy="330" r="20"/>
                         <circle fill="none" stroke="#212121" stroke-width="3" cx="200" cy="330" r="20"/>
                         <line stroke="#212121" stroke-width="3" x1="150" y1="330" x2="175" y2="300"/>
                         <line stroke="#212121" stroke-width="3" x1="200" y1="330" x2="175" y2="300"/>
                         <line stroke="#212121" stroke-width="3" x1="175" y1="300" x2="175" y2="280"/>
                         <line stroke="#212121" stroke-width="2" x1="170" y1="280" x2="180" y2="280"/>
-                        <!-- Vélo 2 -->
                         <circle fill="none" stroke="#1565c0" stroke-width="3" cx="300" cy="330" r="20"/>
                         <circle fill="none" stroke="#1565c0" stroke-width="3" cx="350" cy="330" r="20"/>
                         <line stroke="#1565c0" stroke-width="3" x1="300" y1="330" x2="325" y2="300"/>
                         <line stroke="#1565c0" stroke-width="3" x1="350" y1="330" x2="325" y2="300"/>
                         <line stroke="#1565c0" stroke-width="3" x1="325" y1="300" x2="325" y2="280"/>
-                        <!-- Vélo 3 -->
                         <circle fill="none" stroke="#c62828" stroke-width="3" cx="500" cy="330" r="20"/>
                         <circle fill="none" stroke="#c62828" stroke-width="3" cx="550" cy="330" r="20"/>
                         <line stroke="#c62828" stroke-width="3" x1="500" y1="330" x2="525" y2="300"/>
                         <line stroke="#c62828" stroke-width="3" x1="550" y1="330" x2="525" y2="300"/>
                         <line stroke="#c62828" stroke-width="3" x1="525" y1="300" x2="525" y2="280"/>
-                        <!-- Maisons en arrière-plan -->
                         <rect fill="#4a148c" x="50" y="150" width="100" height="200"/>
                         <rect fill="#6a1b9a" x="170" y="130" width="90" height="220"/>
                         <rect fill="#7b1fa2" x="280" y="160" width="80" height="190"/>
                         <rect fill="#8e24aa" x="500" y="140" width="95" height="210"/>
                         <rect fill="#9c27b0" x="615" y="170" width="85" height="180"/>
                         <rect fill="#ab47bc" x="720" y="150" width="80" height="200"/>
-                        <!-- Pignons -->
                         <polygon fill="#4a148c" points="50,150 100,100 150,150"/>
                         <polygon fill="#6a1b9a" points="170,130 215,80 260,130"/>
                         <polygon fill="#7b1fa2" points="280,160 320,120 360,160"/>
-                        <!-- Reflets dans l'eau -->
                         <rect fill="rgba(255,200,0,0.2)" x="350" y="420" width="100" height="150"/>
-                        <!-- Oiseaux -->
                         <path fill="none" stroke="#212121" stroke-width="2" d="M100,100 Q110,90 120,100"/>
                         <path fill="none" stroke="#212121" stroke-width="2" d="M130,110 Q140,100 150,110"/>
                         <path fill="none" stroke="#212121" stroke-width="2" d="M600,90 Q610,80 620,90"/>
@@ -431,15 +399,10 @@
                             </linearGradient>
                         </defs>
                         <rect fill="url(#sky4)" width="800" height="600"/>
-                        <!-- Lune -->
                         <circle fill="#fff9c4" cx="650" cy="80" r="35"/>
                         <circle fill="url(#sky4)" cx="665" cy="70" r="30"/>
-                        <!-- Canal -->
                         <rect fill="url(#water4)" x="0" y="420" width="800" height="180"/>
-                        <!-- Quai -->
                         <rect fill="#4e342e" x="0" y="380" width="800" height="40"/>
-                        <!-- Rangée de maisons typiques néerlandaises -->
-                        <!-- Maison 1 - Pignon en cloche -->
                         <rect fill="#c62828" x="30" y="180" width="100" height="200"/>
                         <path fill="#b71c1c" d="M30,180 L80,100 L130,180 Z"/>
                         <path fill="#b71c1c" d="M50,180 L80,130 L110,180 Z"/>
@@ -448,7 +411,6 @@
                         <rect fill="#ffecb3" x="50" y="280" width="25" height="35"/>
                         <rect fill="#ffecb3" x="85" y="280" width="25" height="35"/>
                         <rect fill="#5d4037" x="65" y="330" width="30" height="50"/>
-                        <!-- Maison 2 - Pignon à gradins -->
                         <rect fill="#1565c0" x="140" y="160" width="90" height="220"/>
                         <rect fill="#0d47a1" x="150" y="140" width="70" height="20"/>
                         <rect fill="#0d47a1" x="160" y="120" width="50" height="20"/>
@@ -457,7 +419,6 @@
                         <rect fill="#ffecb3" x="195" y="200" width="20" height="30"/>
                         <rect fill="#ffecb3" x="155" y="260" width="20" height="30"/>
                         <rect fill="#ffecb3" x="195" y="260" width="20" height="30"/>
-                        <!-- Maison 3 - Haute et étroite -->
                         <rect fill="#f57c00" x="240" y="140" width="80" height="240"/>
                         <polygon fill="#e65100" points="240,140 280,80 320,140"/>
                         <rect fill="#ffecb3" x="255" y="170" width="20" height="25"/>
@@ -466,37 +427,30 @@
                         <rect fill="#ffecb3" x="285" y="220" width="20" height="25"/>
                         <rect fill="#ffecb3" x="255" y="270" width="20" height="25"/>
                         <rect fill="#ffecb3" x="285" y="270" width="20" height="25"/>
-                        <!-- Maison 4 -->
                         <rect fill="#2e7d32" x="330" y="170" width="95" height="210"/>
                         <polygon fill="#1b5e20" points="330,170 377,110 425,170"/>
                         <rect fill="#ffecb3" x="350" y="200" width="22" height="28"/>
                         <rect fill="#ffecb3" x="385" y="200" width="22" height="28"/>
                         <rect fill="#ffecb3" x="350" y="260" width="22" height="28"/>
                         <rect fill="#ffecb3" x="385" y="260" width="22" height="28"/>
-                        <!-- Maison 5 -->
                         <rect fill="#7b1fa2" x="435" y="150" width="85" height="230"/>
                         <rect fill="#6a1b9a" x="445" y="130" width="65" height="20"/>
                         <rect fill="#6a1b9a" x="455" y="110" width="45" height="20"/>
                         <rect fill="#ffecb3" x="450" y="180" width="20" height="25"/>
                         <rect fill="#ffecb3" x="485" y="180" width="20" height="25"/>
-                        <!-- Maison 6 -->
                         <rect fill="#00838f" x="530" y="165" width="90" height="215"/>
                         <polygon fill="#006064" points="530,165 575,105 620,165"/>
                         <rect fill="#ffecb3" x="550" y="195" width="18" height="25"/>
                         <rect fill="#ffecb3" x="582" y="195" width="18" height="25"/>
-                        <!-- Maison 7 -->
                         <rect fill="#d84315" x="630" y="175" width="80" height="205"/>
                         <polygon fill="#bf360c" points="630,175 670,120 710,175"/>
                         <rect fill="#ffecb3" x="645" y="205" width="18" height="24"/>
                         <rect fill="#ffecb3" x="677" y="205" width="18" height="24"/>
-                        <!-- Maison 8 -->
                         <rect fill="#5d4037" x="720" y="185" width="80" height="195"/>
                         <polygon fill="#4e342e" points="720,185 760,130 800,185"/>
-                        <!-- Reflets -->
                         <rect fill="rgba(255,236,179,0.1)" x="50" y="440" width="80" height="120"/>
                         <rect fill="rgba(255,236,179,0.08)" x="155" y="450" width="60" height="100"/>
                         <rect fill="rgba(255,236,179,0.1)" x="260" y="440" width="50" height="110"/>
-                        <!-- Étoiles -->
                         <circle fill="#fff" cx="100" cy="50" r="1.5"/>
                         <circle fill="#fff" cx="200" cy="70" r="1"/>
                         <circle fill="#fff" cx="350" cy="40" r="1.5"/>
@@ -516,55 +470,43 @@
                             </linearGradient>
                         </defs>
                         <rect fill="url(#sky5)" width="800" height="600"/>
-                        <!-- Pelouse -->
                         <rect fill="#66bb6a" x="0" y="380" width="800" height="220"/>
                         <rect fill="#81c784" x="0" y="380" width="800" height="40"/>
-                        <!-- Palais du Luxembourg -->
                         <rect fill="#d7ccc8" x="200" y="150" width="400" height="200"/>
-                        <!-- Ailes -->
                         <rect fill="#bcaaa4" x="150" y="180" width="50" height="170"/>
                         <rect fill="#bcaaa4" x="600" y="180" width="50" height="170"/>
-                        <!-- Tours -->
                         <rect fill="#a1887f" x="200" y="120" width="60" height="230"/>
                         <rect fill="#a1887f" x="540" y="120" width="60" height="230"/>
-                        <!-- Dôme central -->
                         <ellipse fill="#78909c" cx="400" cy="150" rx="60" ry="40"/>
                         <rect fill="#d7ccc8" x="350" y="150" width="100" height="50"/>
-                        <!-- Fenêtres -->
                         <rect fill="#5d4037" x="260" y="180" width="30" height="45"/>
                         <rect fill="#5d4037" x="310" y="180" width="30" height="45"/>
                         <rect fill="#5d4037" x="360" y="180" width="30" height="45"/>
                         <rect fill="#5d4037" x="410" y="180" width="30" height="45"/>
                         <rect fill="#5d4037" x="460" y="180" width="30" height="45"/>
                         <rect fill="#5d4037" x="510" y="180" width="30" height="45"/>
-                        <!-- Deuxième rangée -->
                         <rect fill="#5d4037" x="260" y="260" width="30" height="45"/>
                         <rect fill="#5d4037" x="310" y="260" width="30" height="45"/>
                         <rect fill="#5d4037" x="360" y="260" width="30" height="45"/>
                         <rect fill="#5d4037" x="410" y="260" width="30" height="45"/>
                         <rect fill="#5d4037" x="460" y="260" width="30" height="45"/>
                         <rect fill="#5d4037" x="510" y="260" width="30" height="45"/>
-                        <!-- Bassin -->
                         <ellipse fill="#0288d1" cx="400" cy="480" rx="150" ry="60"/>
                         <ellipse fill="#03a9f4" cx="400" cy="475" rx="130" ry="50"/>
-                        <!-- Chaises vertes emblématiques -->
                         <rect fill="#2e7d32" x="180" y="440" width="20" height="25" rx="3"/>
                         <rect fill="#2e7d32" x="210" y="445" width="20" height="25" rx="3"/>
                         <rect fill="#2e7d32" x="570" y="438" width="20" height="25" rx="3"/>
                         <rect fill="#2e7d32" x="600" y="443" width="20" height="25" rx="3"/>
-                        <!-- Arbres -->
                         <circle fill="#388e3c" cx="100" cy="320" r="50"/>
                         <circle fill="#43a047" cx="120" cy="340" r="40"/>
                         <rect fill="#5d4037" x="105" y="350" width="12" height="50"/>
                         <circle fill="#388e3c" cx="700" cy="310" r="55"/>
                         <circle fill="#43a047" cx="680" cy="330" r="45"/>
                         <rect fill="#5d4037" x="685" y="340" width="12" height="55"/>
-                        <!-- Fleurs -->
                         <circle fill="#e91e63" cx="300" cy="420" r="8"/>
                         <circle fill="#f06292" cx="315" cy="425" r="6"/>
                         <circle fill="#e91e63" cx="500" cy="418" r="7"/>
                         <circle fill="#f06292" cx="515" cy="422" r="5"/>
-                        <!-- Nuages -->
                         <ellipse fill="rgba(255,255,255,0.6)" cx="150" cy="80" rx="50" ry="25"/>
                         <ellipse fill="rgba(255,255,255,0.6)" cx="190" cy="85" rx="40" ry="20"/>
                         <ellipse fill="rgba(255,255,255,0.5)" cx="600" cy="100" rx="60" ry="28"/>
@@ -581,14 +523,11 @@
                             </linearGradient>
                         </defs>
                         <rect fill="url(#sky6)" width="800" height="600"/>
-                        <!-- Champ de tulipes - bandes de couleurs -->
                         <rect fill="#e91e63" x="0" y="350" width="800" height="50"/>
                         <rect fill="#ff9800" x="0" y="400" width="800" height="50"/>
                         <rect fill="#ffeb3b" x="0" y="450" width="800" height="50"/>
                         <rect fill="#9c27b0" x="0" y="500" width="800" height="50"/>
                         <rect fill="#f44336" x="0" y="550" width="800" height="50"/>
-                        <!-- Tulipes individuelles au premier plan -->
-                        <!-- Rangée rose -->
                         <ellipse fill="#c2185b" cx="50" cy="340" rx="12" ry="18"/>
                         <line stroke="#2e7d32" stroke-width="3" x1="50" y1="358" x2="50" y2="400"/>
                         <ellipse fill="#d81b60" cx="90" cy="335" rx="11" ry="17"/>
@@ -599,47 +538,39 @@
                         <line stroke="#2e7d32" stroke-width="3" x1="170" y1="354" x2="170" y2="398"/>
                         <ellipse fill="#c2185b" cx="210" cy="344" rx="12" ry="17"/>
                         <line stroke="#2e7d32" stroke-width="3" x1="210" y1="361" x2="210" y2="408"/>
-                        <!-- Tulipes orange -->
                         <ellipse fill="#e65100" cx="280" cy="336" rx="13" ry="19"/>
                         <line stroke="#388e3c" stroke-width="3" x1="280" y1="355" x2="280" y2="400"/>
                         <ellipse fill="#ff6d00" cx="320" cy="340" rx="12" ry="18"/>
                         <line stroke="#388e3c" stroke-width="3" x1="320" y1="358" x2="320" y2="402"/>
                         <ellipse fill="#e65100" cx="360" cy="334" rx="11" ry="17"/>
                         <line stroke="#388e3c" stroke-width="3" x1="360" y1="351" x2="360" y2="396"/>
-                        <!-- Tulipes jaunes -->
                         <ellipse fill="#f9a825" cx="430" cy="338" rx="12" ry="18"/>
                         <line stroke="#43a047" stroke-width="3" x1="430" y1="356" x2="430" y2="400"/>
                         <ellipse fill="#fbc02d" cx="470" cy="342" rx="13" ry="19"/>
                         <line stroke="#43a047" stroke-width="3" x1="470" y1="361" x2="470" y2="408"/>
                         <ellipse fill="#f9a825" cx="510" cy="336" rx="11" ry="17"/>
                         <line stroke="#43a047" stroke-width="3" x1="510" y1="353" x2="510" y2="398"/>
-                        <!-- Tulipes violettes -->
                         <ellipse fill="#7b1fa2" cx="580" cy="340" rx="12" ry="18"/>
                         <line stroke="#2e7d32" stroke-width="3" x1="580" y1="358" x2="580" y2="405"/>
                         <ellipse fill="#8e24aa" cx="620" cy="335" rx="11" ry="16"/>
                         <line stroke="#2e7d32" stroke-width="3" x1="620" y1="351" x2="620" y2="395"/>
                         <ellipse fill="#7b1fa2" cx="660" cy="342" rx="12" ry="17"/>
                         <line stroke="#2e7d32" stroke-width="3" x1="660" y1="359" x2="660" y2="404"/>
-                        <!-- Tulipes rouges -->
                         <ellipse fill="#c62828" cx="720" cy="338" rx="13" ry="19"/>
                         <line stroke="#388e3c" stroke-width="3" x1="720" y1="357" x2="720" y2="402"/>
                         <ellipse fill="#d32f2f" cx="760" cy="344" rx="12" ry="18"/>
                         <line stroke="#388e3c" stroke-width="3" x1="760" y1="362" x2="760" y2="410"/>
-                        <!-- Moulin en arrière-plan -->
                         <rect fill="#795548" x="620" y="180" width="40" height="150"/>
                         <polygon fill="#5d4037" points="640,180 600,80 680,80"/>
-                        <!-- Ailes du moulin -->
                         <line stroke="#4e342e" stroke-width="8" x1="640" y1="120" x2="580" y2="60"/>
                         <line stroke="#4e342e" stroke-width="8" x1="640" y1="120" x2="700" y2="60"/>
                         <line stroke="#4e342e" stroke-width="8" x1="640" y1="120" x2="640" y2="180"/>
                         <line stroke="#4e342e" stroke-width="8" x1="640" y1="120" x2="700" y2="180"/>
-                        <!-- Arbres -->
                         <circle fill="#2e7d32" cx="100" cy="280" r="40"/>
                         <circle fill="#388e3c" cx="120" cy="300" r="35"/>
                         <rect fill="#5d4037" x="105" y="300" width="10" height="50"/>
                         <circle fill="#1b5e20" cx="750" cy="260" r="45"/>
                         <rect fill="#5d4037" x="745" y="280" width="10" height="50"/>
-                        <!-- Nuages -->
                         <ellipse fill="rgba(255,255,255,0.7)" cx="200" cy="80" rx="70" ry="30"/>
                         <ellipse fill="rgba(255,255,255,0.6)" cx="260" cy="90" rx="50" ry="25"/>
                         <ellipse fill="rgba(255,255,255,0.5)" cx="500" cy="70" rx="60" ry="28"/>
@@ -647,7 +578,7 @@
                 </div>
 
             </div>
-            
+
             <div class="overlay"></div>
             <div class="crt"></div>
 
@@ -699,7 +630,7 @@
 
             <div class="content">
                 <div class="led"></div>
-                
+
                 <div class="poem-area">
                     <div class="poem" id="poem"><span class="loading">Gedicht laden</span></div>
                     <div class="translation-box" id="trBox"><div class="translation" id="translation"></div></div>
@@ -719,6 +650,284 @@
     </div>
 
 <script>
+// ============================================================
+// POETRY ENGINE — Machine à poèmes pour Ellen d'Utrecht
+// Seed basé sur la date → poèmes uniques chaque jour
+// Jamais les mêmes 5 poèmes / 5 anecdotes deux jours de suite
+// ============================================================
+
+// Générateur pseudo-aléatoire déterministe (Mulberry32)
+function mulberry32(seed) {
+    return function() {
+        seed |= 0;
+        seed = seed + 0x6D2B79F5 | 0;
+        var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+}
+
+// Seed unique par jour (change chaque minuit)
+function dailySeed() {
+    var d = new Date();
+    return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+}
+
+function pick(arr, rng) {
+    return arr[Math.floor(rng() * arr.length)];
+}
+
+// ---- COMPOSANTS POÉTIQUES NL (pour Ellen) ----
+var NL = {
+    ouvertures: [
+        "In Utrecht's grachten weerspiegelt de maan,",
+        "De Domtoren waakt over stille straten,",
+        "Langs het Oudegracht wandel jij alleen,",
+        "De fietsen rusten bij de kanaalboord,",
+        "In de schemering van Utrecht's avondlicht,",
+        "Waar de Dom zijn schaduw over pleinen werpt,",
+        "De Oudegracht fluistert jouw naam zacht,",
+        "Bij Hoog Catharijne rijdt de wereld door,",
+        "Onder Nederlandse wolken, grijs en wit,",
+        "De tulpen staan al in volle bloei,",
+        "In Rijnauwen ruist het zachte groen,",
+        "De kazen liggen goud op de markt,",
+        "Windmolens draaien ver in de polder,",
+        "Het ochtendlicht valt zacht op Utrecht's daken,",
+        "Bij de Dom klinkt de klok voor ons beiden,",
+        "De fietsbel zingt door Utrecht's bochten,",
+        "In de mist van een Nederlandse morgen,",
+        "Stroopwafels ruiken warm op de markt,",
+        "De Nieuwegracht slaapt in avondstilte,",
+        "Jouw naam klinkt als een Utrechts lied,"
+    ],
+    ponts: [
+        "en Parijs mist jouw glimlach vandaag.",
+        "terwijl ik droom van jou hier ver.",
+        "mijn hart reist elke nacht naar jou.",
+        "en ik tel de uren tot ik bij jou ben.",
+        "maar mijn gedachten zijn altijd bij jou.",
+        "ver van Parijs, zo dichtbij in mijn hart.",
+        "en de Seine kent jouw naam ook.",
+        "terwijl ik wacht op jou, lieve Ellen.",
+        "de afstand smelt in onze gedeelde uren.",
+        "en liefde overbrugt elk water.",
+        "jij bent mijn thuis, waar ik ook ben.",
+        "en ik zie jouw licht van hier.",
+        "mijn pen schrijft steeds jouw naam.",
+        "het licht van Utrecht raakt mij hier.",
+        "twee steden, één kloppend hart."
+    ],
+    milieux: [
+        "De Seine en de Rijn — zustersteden,\nverbonden door wat niet gezien wordt.",
+        "Twee steden, één maan boven ons hoofd,\néén hemel die ons beiden warm omarmt.",
+        "Paris droomt van Utrecht's stille kanalen,\nUtrecht fluistert Parijs' naam terug.",
+        "Jouw fiets weet de weg naar mijn hart,\nop straten die ik nog niet ken.",
+        "Descartes liep jouw straten ooit ook,\nik loop ze na in mijn gedachten.",
+        "De Domklok slaat het uur voor ons beiden,\nik tel de slagen tot jij mij belt.",
+        "Stroopwafels en croissants — wij twee,\nverschillend maar zo volmaakt samen.",
+        "Jouw hond rent door het ochtendpark,\nmijn dromen rennen vrolijk mee met hem.",
+        "Jouw kat kijkt uit naar Utrecht's daken,\nmijn venster kijkt verlangend naar jou.",
+        "Rembrandts licht viel ook op Utrecht,\nzo valt jouw glans elke dag op mij.",
+        "Keukenhof bloeit maar eens per jaar,\nmijn liefde voor jou bloeit elke dag.",
+        "Van Gogh verliet ook Nederland ooit,\nmaar droeg het altijd in zijn hart mee.",
+        "Miffy wandelt door Utrechtse dromen,\nwij wandelen samen door de tijd.",
+        "De kaas van Gouda, goud en rond,\nzo kostbaar ben jij voor mij gevonden.",
+        "Onder de Domtoren, eeuwen oud,\nklopt iets wat jij en ik hebben gebouwd.",
+        "De polders liggen vlak en wijd,\nmijn liefde voor jou heeft geen grens of tijd.",
+        "Het Centraal Station kijkt ons na,\njij naar Utrecht, ik terug naar Parijs ga.",
+        "Koningsdag kleurt de straten oranje,\njij kleurt mijn leven in alle tinten."
+    ],
+    clotûres: [
+        "Zo ben ik thuis bij jou, Ellen.",
+        "Twee werelden, één liefde waar.",
+        "Utrecht en Parijs, voor altijd één.",
+        "Totdat ik weer bij jou mag zijn.",
+        "Jij bent mijn thuis, waar ik ook ben.",
+        "En ik tel de dagen tot ik thuiskom.",
+        "Mijn hart slaat elke dag voor jou.",
+        "In elk gedicht leef jij bij mij.",
+        "De afstand maakt mijn liefde groot.",
+        "Ellen, je bent mijn mooiste vers.",
+        "Voor jou schrijf ik elk woord.",
+        "Samen zijn wij meer dan de afstand.",
+        "Jij bent de reden dat ik schrijf.",
+        "Utrecht en ik — wij wachten op jou.",
+        "Elke dag dichter bij jou, mijn lief."
+    ]
+};
+
+// ---- COMPOSANTS POÉTIQUES FR (traductions) ----
+var FR = {
+    ouvertures: [
+        "Dans les canaux d'Utrecht se reflète la lune,",
+        "La Domtoren veille sur les rues silencieuses,",
+        "Le long de l'Oudegracht tu marches seule,",
+        "Les vélos reposent au bord du canal,",
+        "Dans le crépuscule de la lumière d'Utrecht,",
+        "Là où le Dom projette son ombre sur les places,",
+        "L'Oudegracht chuchote doucement ton nom,",
+        "À Hoog Catharijne le monde défile,",
+        "Sous les nuages néerlandais, gris et blancs,",
+        "Les tulipes sont déjà en pleine floraison,",
+        "À Rijnauwen bruisse le doux feuillage,",
+        "Les fromages brillent dorés au marché,",
+        "Les moulins tournent au loin dans le polder,",
+        "La lumière du matin tombe doucement sur Utrecht,",
+        "Près du Dom la cloche sonne pour nous deux,",
+        "La sonnette du vélo chante dans les ruelles,",
+        "Dans le brouillard d'un matin néerlandais,",
+        "Les stroopwafels embaument chaud sur le marché,",
+        "Le Nieuwegracht dort dans le silence du soir,",
+        "Ton nom résonne comme une chanson d'Utrecht,"
+    ],
+    ponts: [
+        "et Paris manque ton sourire aujourd'hui.",
+        "tandis que je rêve de toi là-bas.",
+        "mon cœur voyage chaque nuit vers toi.",
+        "et je compte les heures jusqu'à te rejoindre.",
+        "mais mes pensées sont toujours auprès de toi.",
+        "loin de Paris, si près dans mon cœur.",
+        "et la Seine connaît aussi ton nom.",
+        "tandis que je t'attends, chère Ellen.",
+        "la distance fond dans nos heures partagées.",
+        "et l'amour franchit chaque eau.",
+        "tu es ma maison, où que je sois.",
+        "et je vois ta lumière depuis ici.",
+        "ma plume écrit toujours ton prénom.",
+        "la lumière d'Utrecht me touche ici.",
+        "deux villes, un seul cœur qui bat."
+    ],
+    milieux: [
+        "La Seine et le Rhin — villes sœurs,\nreliées par ce que les yeux ne voient pas.",
+        "Deux villes, une lune au-dessus de nos têtes,\nun ciel qui nous embrasse chaleureusement tous deux.",
+        "Paris rêve des canaux silencieux d'Utrecht,\nUtrecht murmure le nom de Paris en retour.",
+        "Ton vélo connaît le chemin vers mon cœur,\ndans des rues que je ne connais pas encore.",
+        "Descartes a marché tes rues autrefois,\nje les arpente en pensée dans son sillage.",
+        "La cloche de la Dom sonne l'heure pour nous,\nje compte les coups jusqu'à ce que tu appelles.",
+        "Stroopwafels et croissants — nous deux,\ndifférents mais si parfaitement ensemble.",
+        "Ton chien court dans le parc du matin,\nmes rêves courent joyeusement avec lui.",
+        "Ton chat regarde les toits d'Utrecht,\nma fenêtre te regarde avec nostalgie.",
+        "La lumière de Rembrandt tomba aussi sur Utrecht,\nainsi ton éclat illumine chaque jour ma vie.",
+        "Keukenhof ne fleurit qu'une fois par an,\nmon amour pour toi fleurit chaque jour.",
+        "Van Gogh quitta aussi les Pays-Bas un jour,\nmais les porta toujours dans son cœur.",
+        "Miffy se promène dans les rêves d'Utrecht,\nnous nous promenons ensemble dans le temps.",
+        "Le fromage de Gouda, doré et rond,\naussi précieuse tu es pour moi, je l'ai compris.",
+        "Sous la Domtoren, vieille de siècles,\nbat quelque chose que toi et moi avons construit.",
+        "Les polders s'étendent plats et vastes,\nmon amour pour toi n'a ni limite ni fin.",
+        "La gare Centrale nous regarde partir,\ntoi vers Utrecht, moi vers Paris.",
+        "Koningsdag colore les rues en orange,\ntu colores ma vie de toutes les nuances."
+    ],
+    clotûres: [
+        "Ainsi je suis chez moi avec toi, Ellen.",
+        "Deux mondes, un amour véritable.",
+        "Utrecht et Paris, pour toujours unis.",
+        "Jusqu'à ce que je sois de nouveau près de toi.",
+        "Tu es ma maison, où que je sois.",
+        "Et je compte les jours jusqu'à rentrer.",
+        "Mon cœur bat chaque jour pour toi.",
+        "Dans chaque poème tu vis avec moi.",
+        "La distance rend mon amour plus grand.",
+        "Ellen, tu es mon plus beau vers.",
+        "Pour toi j'écris chaque mot.",
+        "Ensemble nous sommes plus forts que la distance.",
+        "Tu es la raison pour laquelle j'écris.",
+        "Utrecht et moi — nous t'attendons.",
+        "Chaque jour plus près de toi, mon amour."
+    ]
+};
+
+// ---- POOL D'ANECDOTES (50 uniques) ----
+var ANECDOTES = [
+    "La Domtoren d'Utrecht (112m) est la plus haute tour des Pays-Bas, construite entre 1321 et 1382.",
+    "Utrecht fut fondée par les Romains vers 47 après J.-C. sous le nom de Trajectum ad Rhenum.",
+    "Descartes vécut à Utrecht de 1629 à 1649 et y écrivit le Discours de la Méthode.",
+    "L'Oudegracht est unique : ses caves médiévales ont des accès directs depuis le niveau de l'eau.",
+    "Utrecht compte plus de vélos que d'habitants — environ 340 000 vélos pour 360 000 habitants.",
+    "La tulipomanie (1634-1637) vit certains bulbes se vendre plus cher qu'une maison à Amsterdam.",
+    "Le Traité d'Utrecht (1713) mit fin à la Guerre de Succession d'Espagne et redesina l'Europe.",
+    "Van Gogh vécut à Paris de 1886 à 1888 et y peignit plus de 200 tableaux sous influence impressionniste.",
+    "Les chaises vertes du Jardin du Luxembourg sont au nombre de 6 000 — une institution parisienne.",
+    "Le Vondelpark d'Amsterdam accueille 10 millions de visiteurs par an.",
+    "Keukenhof, près de Lisse, expose 7 millions de bulbes de fleurs chaque printemps.",
+    "Dick Bruna, créateur de Miffy (Nijntje), était Utrechtois — le musée Miffy se trouve à Utrecht.",
+    "Utrecht possède le plus grand réseau de sous-sols piétons intégrés aux canaux des Pays-Bas.",
+    "La gare Centrale d'Utrecht est la plus fréquentée des Pays-Bas avec 110 000 voyageurs par jour.",
+    "Le fromage Gouda est fabriqué à Gouda, à 45 km d'Utrecht — chaque mercredi, marché traditionnel.",
+    "Les Néerlandais consomment en moyenne 14 kg de fromage par an, l'un des plus hauts au monde.",
+    "17% des terres néerlandaises sont sous le niveau de la mer, gagnées sur l'océan.",
+    "Le Rietveld Schröderhuis à Utrecht est le seul bâtiment De Stijl classé au patrimoine mondial UNESCO.",
+    "Les Pays-Bas sont le 2ème exportateur mondial de produits agricoles après les États-Unis.",
+    "Utrecht abrite l'Université d'Utrecht, fondée en 1636, l'une des plus anciennes des Pays-Bas.",
+    "Le canal de l'Oudegracht a été creusé au XIIe siècle pour relier le Rhin au port d'Utrecht.",
+    "La tradition du Sinterklaas arrive aux Pays-Bas par bateau depuis l'Espagne chaque 5 décembre.",
+    "Les stroopwafels ont été inventés à Gouda vers 1810 par le boulanger Gerard Kamphuisen.",
+    "Amsterdam compte plus de 1 200 ponts — plus que Venise et ses 400 ponts.",
+    "Le Rijksmuseum d'Amsterdam possède 8 000 œuvres exposées parmi son million d'objets.",
+    "Vermeer peignit La Jeune Fille à la Perle vers 1665 avec du lapis-lazuli, pigment plus précieux que l'or.",
+    "La maison d'Anne Frank à Amsterdam attire 1,3 million de visiteurs par an.",
+    "Paris et Utrecht sont à exactement 500 km — 4h30 en TGV + Thalys.",
+    "Le Tour de France a eu un Grand Départ à Utrecht en 2015.",
+    "Le peintre Mondrian, né à Amersfoort (près d'Utrecht), inventa le néoplasticisme en 1917.",
+    "Les Néerlandais mesurent en moyenne 182,9 cm — le peuple le plus grand au monde.",
+    "Utrecht possède le plus grand parking vélos souterrain d'Europe (12 500 places) sous la gare.",
+    "La Fête du Roi (Koningsdag) transforme les Pays-Bas en immense marché aux puces orange chaque 27 avril.",
+    "Rembrandt vendit La Ronde de Nuit en 1642 pour une somme modeste — ignorée de son vivant.",
+    "L'hagelslag (vermicelles de chocolat sur pain beurré) est un petit-déjeuner typiquement néerlandais.",
+    "Le moulin à vent le plus ancien des Pays-Bas date de 1450, à Zeddam.",
+    "Utrecht fut la première ville européenne à adopter un réseau de tramway électrique en 1900.",
+    "Le festival Le Guess Who? à Utrecht est l'un des plus importants festivals de musique des Pays-Bas.",
+    "Les Pays-Bas ont légalisé le mariage homosexuel en 2001, premiers au monde à le faire.",
+    "Heineken, fondée à Amsterdam en 1873, est la 3ème brasserie mondiale.",
+    "La nuit la plus courte à Utrecht dure 6 heures en juin — le soleil se couche très tard en été.",
+    "Les bulbes de tulipes peuvent être mangés : pendant la famine de 1944, les Néerlandais en ont survécu.",
+    "Le Musée Centraal d'Utrecht possède la plus grande collection d'œuvres de Rietveld au monde.",
+    "La spécialité culinaire d'Utrecht est le 'Utrechtse spritsen', un biscuit au beurre en forme d'étoile.",
+    "Le pont Gaardbrug sur l'Oudegracht date de 1378 et est l'un des plus anciens ponts d'Utrecht.",
+    "Utrecht organise chaque année l'une des plus grandes foires du livre des Pays-Bas.",
+    "Le Dom d'Utrecht possède le plus grand carillon des Pays-Bas : 50 cloches accordées.",
+    "La ville d'Utrecht tire son nom du latin 'ultra trajectum' — au-delà du gué.",
+    "Le quartier de Lombok à Utrecht est réputé pour sa diversité culturelle et sa cuisine du monde.",
+    "La bière Grolsch est brassée à Enschede, mais les cafés d'Utrecht en servent depuis 1615."
+];
+
+// ---- GÉNÉRATEUR DE POÈME ----
+function buildPoem(seed) {
+    var rng = mulberry32(seed);
+    var nl = pick(NL.ouvertures, rng) + '\n'
+           + pick(NL.ponts, rng) + '\n'
+           + pick(NL.milieux, rng) + '\n'
+           + pick(NL.clotûres, rng);
+    var fr = pick(FR.ouvertures, rng) + '\n'
+           + pick(FR.ponts, rng) + '\n'
+           + pick(FR.milieux, rng) + '\n'
+           + pick(FR.clotûres, rng);
+    return { nl: nl, fr: fr };
+}
+
+function generateDailyPoems() {
+    var base = dailySeed();
+    var poems = [];
+    var usedAnecdotes = [];
+
+    for (var i = 0; i < 5; i++) {
+        var poem = buildPoem(base + i * 1337);
+
+        // Anecdote unique par slot
+        var aRng = mulberry32(base + i * 9973);
+        var anecdote, tries = 0;
+        do {
+            anecdote = pick(ANECDOTES, aRng);
+            tries++;
+        } while (usedAnecdotes.indexOf(anecdote) !== -1 && tries < 30);
+        usedAnecdotes.push(anecdote);
+
+        poems.push({ nl: poem.nl, fr: poem.fr, an: anecdote });
+    }
+    return poems;
+}
+
+// ---- RUNTIME ----
 var locations = [
     'Utrecht — Oudegracht',
     'Utrecht — Domtoren',
@@ -728,24 +937,7 @@ var locations = [
     'Keukenhof — Tulipes'
 ];
 
-var poems = [
-    { nl: "In het Luxembourg, waar stoelen groen staan,\ndenk ik aan Utrecht, aan Ellen's glimlach daar.\nDe Domtoren wijst naar dezelfde maan\ndie Parijs verlicht, zo wonderbaar.",
-      fr: "Au Luxembourg, où les chaises sont vertes,\nje pense à Utrecht, au sourire d'Ellen.\nLa Domtoren pointe vers la même lune\nqui illumine Paris, si merveilleusement.",
-      an: "Les célèbres chaises vertes du Jardin du Luxembourg sont au nombre de 6000." },
-    { nl: "De grachten van Utrecht weerspiegelen\nde hemel die ook Parijs omarmt.\nEllen wandelt waar de Dom torens spreken,\nen mijn hart naar het Luxembourg verlangt.",
-      fr: "Les canaux d'Utrecht reflètent\nle ciel qui embrasse aussi Paris.\nEllen marche où la Dom parle,\net mon cœur aspire au Luxembourg.",
-      an: "Descartes vécut à Utrecht de 1629 à 1649, où il écrivit ses œuvres majeures." },
-    { nl: "Tulpen bloeien in het Keukenhof licht,\nrozen groeien in Parijs' tuinen stil.\nEllen's stad draagt het ochtendgezicht,\nterwijl de Seine stroomt naar eigen wil.",
-      fr: "Les tulipes fleurissent à Keukenhof,\nles roses poussent dans les jardins de Paris.\nLa ville d'Ellen porte le visage du matin,\ntandis que la Seine coule à sa guise.",
-      an: "La tulipomanie vit certains bulbes se vendre plus cher qu'une maison à Amsterdam." },
-    { nl: "Van Gogh droomde van Parijs' licht,\nvanuit de Nederlandse velden wijd.\nNu verbindt de avond dit gedicht,\nUtrecht en Parijs, door de tijd.",
-      fr: "Van Gogh rêvait de la lumière de Paris,\ndepuis les vastes champs néerlandais.\nLe soir relie ce poème,\nUtrecht et Paris, à travers le temps.",
-      an: "Van Gogh vécut à Paris de 1886 à 1888, où il peignit plus de 200 tableaux." },
-    { nl: "Het Vondelpark ontwaakt in ochtenddauw,\nhet Luxembourg baadt in gouden gloed.\nEllen fietst door straten oud en grauw,\nParijs en Utrecht delen hetzelfde bloed.",
-      fr: "Le Vondelpark s'éveille dans la rosée,\nle Luxembourg baigne dans la lueur dorée.\nEllen pédale dans les rues anciennes,\nParis et Utrecht partagent le même sang.",
-      an: "Le Vondelpark accueille 10 millions de visiteurs par an." }
-];
-
+var poems = generateDailyPoems();
 var currentSlide = 0;
 var poemIdx = 0;
 var lastMin = -1;
@@ -769,9 +961,7 @@ playBtn.addEventListener('click', function() {
     if (audioPlayer.paused) {
         audioPlayer.play().then(function() {
             playBtn.classList.add('playing');
-        }).catch(function(e) {
-            console.log('Erreur audio:', e);
-        });
+        }).catch(function(e) { console.log('Audio:', e); });
     } else {
         audioPlayer.pause();
         playBtn.classList.remove('playing');
@@ -783,11 +973,16 @@ function updateClock() {
     var now = new Date();
     document.getElementById('paris').textContent = now.toLocaleTimeString('fr-FR', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit' });
     document.getElementById('utrecht').textContent = now.toLocaleTimeString('nl-NL', { timeZone: 'Europe/Amsterdam', hour: '2-digit', minute: '2-digit' });
-    document.getElementById('date').textContent = now.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
-    
+    document.getElementById('date').textContent = now.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' });
+
     var min = now.getMinutes();
     if (min !== lastMin && !typing) {
         lastMin = min;
+        // Regénère si minuit passé (nouveau jour)
+        if (now.getHours() === 0 && min === 0) {
+            poems = generateDailyPoems();
+            poemIdx = 0;
+        }
         showPoem();
     }
 }
@@ -797,11 +992,11 @@ function showPoem() {
     document.getElementById('trBox').classList.remove('show');
     document.getElementById('anBox').classList.remove('show');
     document.getElementById('poem').innerHTML = '<span class="loading">Nieuw gedicht</span>';
-    
+
     setTimeout(function() {
-        var p = poems[poemIdx];
+        var p = poems[poemIdx % poems.length];
         poemIdx = (poemIdx + 1) % poems.length;
-        
+
         typeText('poem', p.nl, 'cursor', function() {
             setTimeout(function() {
                 document.getElementById('translation').innerHTML = '';
@@ -823,14 +1018,14 @@ function typeText(id, text, cursorClass, callback) {
     el.innerHTML = '<span class="' + cursorClass + '"></span>';
     var out = '';
     var i = 0;
-    
+
     function typeChar() {
         if (i < text.length) {
             var ch = text[i];
             out += (ch === '\n') ? '<br>' : ch;
             el.innerHTML = out + '<span class="' + cursorClass + '"></span>';
             i++;
-            setTimeout(typeChar, 30 + Math.random() * 25);
+            setTimeout(typeChar, 28 + Math.random() * 22);
         } else {
             setTimeout(function() {
                 el.innerHTML = out;
