@@ -26,6 +26,11 @@
             justify-content: center;
             background: #1a1a2e;
             font-family: 'IBM Plex Mono', monospace;
+            /* Safe-area pour iPhones à encoche */
+            padding-top: env(safe-area-inset-top, 0);
+            padding-bottom: env(safe-area-inset-bottom, 0);
+            padding-left: env(safe-area-inset-left, 0);
+            padding-right: env(safe-area-inset-right, 0);
         }
 
         .device {
@@ -1518,6 +1523,8 @@ function toggleSavePoem() {
     }
     localStorage.setItem('ellen_anthology', JSON.stringify(anth));
     updateHeartButton();
+    var bc = document.getElementById('bookCount');
+    if (bc) bc.textContent = anth.length;
 }
 
 // ============================================================
@@ -1608,14 +1615,7 @@ document.getElementById('modal').addEventListener('click', function(e) {
     if (e.target.id === 'modal') closeModal();
 });
 
-// Mise à jour du compteur du bouton livre après chaque save
-var _origToggle = toggleSavePoem;
-toggleSavePoem = function() {
-    _origToggle();
-    document.getElementById('bookCount').textContent = getAnthology().length;
-};
-document.getElementById('heartBtn').removeEventListener('click', _origToggle);
-document.getElementById('heartBtn').addEventListener('click', toggleSavePoem);
+// Initialise le compteur du bouton livre au chargement
 document.getElementById('bookCount').textContent = getAnthology().length;
 
 // ============================================================
