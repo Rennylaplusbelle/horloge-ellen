@@ -196,7 +196,9 @@
             line-height: 1.85;
             color: #4ade80;
             text-shadow: 0 0 12px rgba(74,222,128,0.7);
-            min-height: 140px;
+            /* Pas de min-height : la hauteur est fixée par les 4 lignes naturelles.
+               overflow:hidden empêche toute expansion lors du typing effect. */
+            overflow: hidden;
             letter-spacing: 0.2px;
         }
 
@@ -321,6 +323,119 @@
 
         .loading::after { content: '...'; animation: dots 1.5s steps(4) infinite; }
         @keyframes dots { 0%,20%{content:'';} 40%{content:'.';} 60%{content:'..';} 80%,100%{content:'...';} }
+
+        /* =====================================================
+           MOBILE LOCK — iPhone 14/16 : 1 écran, jamais de scroll
+           100dvh = hauteur dynamique (exclut la barre Safari)
+           min-height: 0 sur les enfants flex = CRITIQUE pour
+           empêcher l'étirement quand le poème se tape
+           ===================================================== */
+        @media (max-width: 480px) {
+            html { height: 100%; overflow: hidden; }
+
+            body {
+                height: 100dvh;
+                min-height: unset;
+                overflow: hidden;
+                padding: 0;
+                align-items: stretch;
+            }
+
+            .device {
+                width: 100vw;
+                height: 100dvh;
+                border-radius: 0;
+                padding: 0;
+                box-shadow: none;
+            }
+
+            .screen {
+                height: 100%;
+                min-height: unset;
+                border-radius: 0;
+                overflow: hidden;
+            }
+
+            .content {
+                height: 100%;
+                min-height: unset;
+                padding: 14px 14px 8px 14px;
+                overflow: hidden;
+            }
+
+            /* Chaîne flex verrouillée : chaque enfant cède la place
+               sans faire grossir le parent */
+            .poem-area {
+                flex: 1;
+                min-height: 0;          /* CRITIQUE — empêche l'overflow flex */
+                overflow: hidden;
+                padding: 62px 0 0 0;
+                gap: 8px;
+            }
+
+            .poem-panel {
+                display: flex;
+                flex-direction: column;
+                min-height: 0;
+                overflow: hidden;
+                padding: 10px 12px;
+                gap: 0;
+            }
+
+            /* Poème NL — hauteur fixe, ne grandit pas */
+            .poem {
+                font-size: 14px;
+                line-height: 1.65;
+                min-height: unset;
+                flex-shrink: 0;
+                overflow: hidden;
+            }
+
+            /* Traduction FR */
+            .translation {
+                font-size: 14px;
+                line-height: 1.55;
+                padding-left: 10px;
+            }
+
+            .fr-line { padding: 1px 2px; }
+            .fr-line::after { font-size: 9px; }
+
+            .reveal-hint { font-size: 9px; margin-top: 5px; }
+
+            /* Bouton cœur compact */
+            .heart-btn {
+                margin-top: 6px;
+                padding: 5px 10px;
+                font-size: 9px;
+            }
+            .heart-btn .heart-icon { font-size: 11px; }
+
+            /* Anecdote — taille réduite */
+            .anecdote-box { flex-shrink: 0; }
+            .anecdote {
+                padding: 8px 12px;
+                font-size: 11px;
+            }
+            .anecdote .an-nl { font-size: 10px; margin-bottom: 4px; }
+            .anecdote .an-fr { font-size: 11px; padding-top: 4px; }
+
+            /* Footer compact */
+            .footer { padding-top: 6px; flex-shrink: 0; }
+            .city { font-size: 8px; }
+            .city span { font-size: 11px; }
+            .location { font-size: 8px; padding: 4px 8px; }
+            .date { font-size: 10px; }
+
+            /* Stickers plus petits */
+            .sticker-cat { width: 50px; height: 50px; top: 50px; left: 8px; }
+            .sticker-dog { width: 65px; height: 50px; bottom: 55px; right: 8px; }
+
+            /* Streak + bouton livre repositionnés */
+            .streak { top: 8px; right: 22px; padding: 4px 9px; font-size: 10px; }
+            .streak .badge { font-size: 12px; }
+            .book-btn { top: 8px; right: 105px; padding: 5px 9px; font-size: 10px; }
+        }
 
         /* --- Streak quotidien : compteur de jours --- */
         .streak {
