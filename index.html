@@ -2,8 +2,18 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>Poëtische Klok — Paris × Utrecht</title>
+    <meta name="description" content="Une horloge poétique pour Ellen — poèmes bilingues NL/FR renouvelés chaque jour. Utrecht ↔ Paris.">
+    <meta name="theme-color" content="#0a0a0a">
+    <!-- iOS Add to Home Screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Ellen">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%230a0a0a'/><text x='50%25' y='52%25' font-size='110' text-anchor='middle' dominant-baseline='central'>💌</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='50' font-size='56'>💌</text></svg>">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Cormorant+Garamond:ital@1&display=swap');
 
@@ -256,12 +266,32 @@
         .anecdote-box.show { opacity: 1; transform: translateY(0); }
 
         .anecdote {
-            font-size: 10px;
-            line-height: 1.6;
-            color: rgba(236,72,153,0.65);
-            padding-left: 14px;
-            border-left: 2px solid rgba(236,72,153,0.25);
-            max-width: 90%;
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid rgba(249,168,212,0.2);
+            border-left: 3px solid rgba(236,72,153,0.6);
+            font-size: 12px;
+            line-height: 1.55;
+            color: rgba(255,255,255,0.88);
+            max-width: 100%;
+        }
+        .anecdote .an-nl {
+            color: #4ade80;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            margin-bottom: 6px;
+            text-shadow: 0 0 8px rgba(74,222,128,0.4);
+        }
+        .anecdote .an-fr {
+            color: #f9a8d4;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 13px;
+            padding-top: 6px;
+            border-top: 1px dashed rgba(249,168,212,0.2);
         }
 
         .footer {
@@ -351,6 +381,174 @@
             30% { transform: scale(1.5); }
             60% { transform: scale(0.9); }
             100% { transform: scale(1.1); }
+        }
+
+        /* --- Bouton livre (ouvre l'anthologie) --- */
+        .book-btn {
+            position: absolute;
+            top: 12px;
+            right: 130px;
+            z-index: 30;
+            background: rgba(0,0,0,0.65);
+            border: 1px solid rgba(74,222,128,0.45);
+            border-radius: 20px;
+            padding: 6px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: #4ade80;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        .book-btn:hover {
+            background: rgba(74,222,128,0.15);
+            box-shadow: 0 0 14px rgba(74,222,128,0.4);
+        }
+        .book-btn .book-count {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* --- Modale Anthologie : plein écran --- */
+        .modal-backdrop {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .modal-backdrop.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(249,168,212,0.25);
+            background: rgba(236,72,153,0.08);
+        }
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 18px;
+            color: #f9a8d4;
+            text-shadow: 0 0 10px rgba(249,168,212,0.5);
+        }
+        .modal-title .count-pill {
+            display: inline-block;
+            background: rgba(236,72,153,0.2);
+            border: 1px solid rgba(236,72,153,0.5);
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: #fff;
+            font-style: normal;
+            margin-left: 8px;
+        }
+        .modal-close {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .modal-close:hover {
+            background: rgba(255,255,255,0.18);
+            transform: rotate(90deg);
+        }
+        .modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 20px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .modal-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255,255,255,0.5);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        .modal-empty .empty-icon {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        .saved-card {
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(74,222,128,0.2);
+            border-left: 3px solid rgba(236,72,153,0.6);
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .saved-card .saved-nl {
+            color: #4ade80;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            white-space: pre-line;
+            text-shadow: 0 0 8px rgba(74,222,128,0.4);
+        }
+        .saved-card .saved-fr {
+            color: #f9a8d4;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 14px;
+            line-height: 1.65;
+            white-space: pre-line;
+            padding-top: 10px;
+            margin-top: 10px;
+            border-top: 1px dashed rgba(249,168,212,0.25);
+            text-shadow: 0 0 10px rgba(249,168,212,0.35);
+        }
+        .saved-card .saved-date {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        .saved-card .saved-remove {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.4);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .saved-card .saved-remove:hover {
+            color: #ef4444;
+            background: rgba(239,68,68,0.1);
         }
 
         /* --- Toast de confirmation --- */
@@ -773,6 +971,21 @@
                     <span class="count" id="streakCount">1</span>
                 </div>
 
+                <button class="book-btn" id="bookBtn" type="button" title="Mes poèmes / Mijn gedichten">
+                    📖 <span class="book-count" id="bookCount">0</span>
+                </button>
+
+                <div class="modal-backdrop" id="modal">
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            Mijn gedichten · Mes poèmes
+                            <span class="count-pill" id="modalCount">0</span>
+                        </div>
+                        <button class="modal-close" id="modalClose" type="button">×</button>
+                    </div>
+                    <div class="modal-body" id="modalBody"></div>
+                </div>
+
                 <div class="poem-area">
                     <div class="poem-panel">
                         <div class="poem" id="poem"><span class="loading">Gedicht laden</span></div>
@@ -990,58 +1203,58 @@ var FR = {
     ]
 };
 
-// ---- POOL D'ANECDOTES (50 uniques) ----
+// ---- POOL D'ANECDOTES BILINGUES (50 uniques · FR + NL) ----
 var ANECDOTES = [
-    "La Domtoren d'Utrecht (112m) est la plus haute tour des Pays-Bas, construite entre 1321 et 1382.",
-    "Utrecht fut fondée par les Romains vers 47 après J.-C. sous le nom de Trajectum ad Rhenum.",
-    "Descartes vécut à Utrecht de 1629 à 1649 et y écrivit le Discours de la Méthode.",
-    "L'Oudegracht est unique : ses caves médiévales ont des accès directs depuis le niveau de l'eau.",
-    "Utrecht compte plus de vélos que d'habitants — environ 340 000 vélos pour 360 000 habitants.",
-    "La tulipomanie (1634-1637) vit certains bulbes se vendre plus cher qu'une maison à Amsterdam.",
-    "Le Traité d'Utrecht (1713) mit fin à la Guerre de Succession d'Espagne et redesina l'Europe.",
-    "Van Gogh vécut à Paris de 1886 à 1888 et y peignit plus de 200 tableaux sous influence impressionniste.",
-    "Les chaises vertes du Jardin du Luxembourg sont au nombre de 6 000 — une institution parisienne.",
-    "Le Vondelpark d'Amsterdam accueille 10 millions de visiteurs par an.",
-    "Keukenhof, près de Lisse, expose 7 millions de bulbes de fleurs chaque printemps.",
-    "Dick Bruna, créateur de Miffy (Nijntje), était Utrechtois — le musée Miffy se trouve à Utrecht.",
-    "Utrecht possède le plus grand réseau de sous-sols piétons intégrés aux canaux des Pays-Bas.",
-    "La gare Centrale d'Utrecht est la plus fréquentée des Pays-Bas avec 110 000 voyageurs par jour.",
-    "Le fromage Gouda est fabriqué à Gouda, à 45 km d'Utrecht — chaque mercredi, marché traditionnel.",
-    "Les Néerlandais consomment en moyenne 14 kg de fromage par an, l'un des plus hauts au monde.",
-    "17% des terres néerlandaises sont sous le niveau de la mer, gagnées sur l'océan.",
-    "Le Rietveld Schröderhuis à Utrecht est le seul bâtiment De Stijl classé au patrimoine mondial UNESCO.",
-    "Les Pays-Bas sont le 2ème exportateur mondial de produits agricoles après les États-Unis.",
-    "Utrecht abrite l'Université d'Utrecht, fondée en 1636, l'une des plus anciennes des Pays-Bas.",
-    "Le canal de l'Oudegracht a été creusé au XIIe siècle pour relier le Rhin au port d'Utrecht.",
-    "La tradition du Sinterklaas arrive aux Pays-Bas par bateau depuis l'Espagne chaque 5 décembre.",
-    "Les stroopwafels ont été inventés à Gouda vers 1810 par le boulanger Gerard Kamphuisen.",
-    "Amsterdam compte plus de 1 200 ponts — plus que Venise et ses 400 ponts.",
-    "Le Rijksmuseum d'Amsterdam possède 8 000 œuvres exposées parmi son million d'objets.",
-    "Vermeer peignit La Jeune Fille à la Perle vers 1665 avec du lapis-lazuli, pigment plus précieux que l'or.",
-    "La maison d'Anne Frank à Amsterdam attire 1,3 million de visiteurs par an.",
-    "Paris et Utrecht sont à exactement 500 km — 4h30 en TGV + Thalys.",
-    "Le Tour de France a eu un Grand Départ à Utrecht en 2015.",
-    "Le peintre Mondrian, né à Amersfoort (près d'Utrecht), inventa le néoplasticisme en 1917.",
-    "Les Néerlandais mesurent en moyenne 182,9 cm — le peuple le plus grand au monde.",
-    "Utrecht possède le plus grand parking vélos souterrain d'Europe (12 500 places) sous la gare.",
-    "La Fête du Roi (Koningsdag) transforme les Pays-Bas en immense marché aux puces orange chaque 27 avril.",
-    "Rembrandt vendit La Ronde de Nuit en 1642 pour une somme modeste — ignorée de son vivant.",
-    "L'hagelslag (vermicelles de chocolat sur pain beurré) est un petit-déjeuner typiquement néerlandais.",
-    "Le moulin à vent le plus ancien des Pays-Bas date de 1450, à Zeddam.",
-    "Utrecht fut la première ville européenne à adopter un réseau de tramway électrique en 1900.",
-    "Le festival Le Guess Who? à Utrecht est l'un des plus importants festivals de musique des Pays-Bas.",
-    "Les Pays-Bas ont légalisé le mariage homosexuel en 2001, premiers au monde à le faire.",
-    "Heineken, fondée à Amsterdam en 1873, est la 3ème brasserie mondiale.",
-    "La nuit la plus courte à Utrecht dure 6 heures en juin — le soleil se couche très tard en été.",
-    "Les bulbes de tulipes peuvent être mangés : pendant la famine de 1944, les Néerlandais en ont survécu.",
-    "Le Musée Centraal d'Utrecht possède la plus grande collection d'œuvres de Rietveld au monde.",
-    "La spécialité culinaire d'Utrecht est le 'Utrechtse spritsen', un biscuit au beurre en forme d'étoile.",
-    "Le pont Gaardbrug sur l'Oudegracht date de 1378 et est l'un des plus anciens ponts d'Utrecht.",
-    "Utrecht organise chaque année l'une des plus grandes foires du livre des Pays-Bas.",
-    "Le Dom d'Utrecht possède le plus grand carillon des Pays-Bas : 50 cloches accordées.",
-    "La ville d'Utrecht tire son nom du latin 'ultra trajectum' — au-delà du gué.",
-    "Le quartier de Lombok à Utrecht est réputé pour sa diversité culturelle et sa cuisine du monde.",
-    "La bière Grolsch est brassée à Enschede, mais les cafés d'Utrecht en servent depuis 1615."
+    { fr: "La Domtoren d'Utrecht (112m) est la plus haute tour des Pays-Bas, construite entre 1321 et 1382.", nl: "De Domtoren van Utrecht (112m) is de hoogste toren van Nederland, gebouwd tussen 1321 en 1382." },
+    { fr: "Utrecht fut fondée par les Romains vers 47 après J.-C. sous le nom de Trajectum ad Rhenum.", nl: "Utrecht werd rond 47 na Chr. gesticht door de Romeinen onder de naam Trajectum ad Rhenum." },
+    { fr: "Descartes vécut à Utrecht de 1629 à 1649 et y écrivit le Discours de la Méthode.", nl: "Descartes woonde van 1629 tot 1649 in Utrecht en schreef daar zijn Vertoog over de Methode." },
+    { fr: "L'Oudegracht est unique : ses caves médiévales ont des accès directs depuis le niveau de l'eau.", nl: "De Oudegracht is uniek: de middeleeuwse werfkelders hebben directe toegang vanaf het water." },
+    { fr: "Utrecht compte plus de vélos que d'habitants — environ 340 000 vélos pour 360 000 habitants.", nl: "Utrecht heeft meer fietsen dan inwoners — ongeveer 340.000 fietsen voor 360.000 inwoners." },
+    { fr: "La tulipomanie (1634-1637) vit certains bulbes se vendre plus cher qu'une maison à Amsterdam.", nl: "Tijdens de tulpenmanie (1634-1637) werden sommige bollen duurder verkocht dan een huis in Amsterdam." },
+    { fr: "Le Traité d'Utrecht (1713) mit fin à la Guerre de Succession d'Espagne et redessina l'Europe.", nl: "De Vrede van Utrecht (1713) beëindigde de Spaanse Successieoorlog en hertekende Europa." },
+    { fr: "Van Gogh vécut à Paris de 1886 à 1888 et y peignit plus de 200 tableaux sous influence impressionniste.", nl: "Van Gogh woonde van 1886 tot 1888 in Parijs en schilderde er meer dan 200 werken onder impressionistische invloed." },
+    { fr: "Les chaises vertes du Jardin du Luxembourg sont au nombre de 6 000 — une institution parisienne.", nl: "De groene stoelen van de Jardin du Luxembourg zijn met 6.000 — een Parijse instelling." },
+    { fr: "Le Vondelpark d'Amsterdam accueille 10 millions de visiteurs par an.", nl: "Het Vondelpark in Amsterdam ontvangt 10 miljoen bezoekers per jaar." },
+    { fr: "Keukenhof, près de Lisse, expose 7 millions de bulbes de fleurs chaque printemps.", nl: "Keukenhof bij Lisse toont elke lente 7 miljoen bloembollen." },
+    { fr: "Dick Bruna, créateur de Miffy (Nijntje), était Utrechtois — le musée Miffy se trouve à Utrecht.", nl: "Dick Bruna, maker van Nijntje, was een Utrechter — het nijntje museum staat in Utrecht." },
+    { fr: "Utrecht possède le plus grand réseau de caves à quai le long de ses canaux aux Pays-Bas.", nl: "Utrecht heeft het grootste netwerk werfkelders langs zijn grachten van Nederland." },
+    { fr: "La gare Centrale d'Utrecht est la plus fréquentée des Pays-Bas avec 190 000 voyageurs par jour.", nl: "Utrecht Centraal is het drukste station van Nederland met 190.000 reizigers per dag." },
+    { fr: "Le fromage Gouda est fabriqué à Gouda, à 45 km d'Utrecht — chaque jeudi, marché traditionnel.", nl: "Goudse kaas wordt gemaakt in Gouda, 45 km van Utrecht — elke donderdag is er een traditionele markt." },
+    { fr: "Les Néerlandais consomment en moyenne 14 kg de fromage par an, parmi les plus hauts au monde.", nl: "Nederlanders eten gemiddeld 14 kg kaas per jaar, een van de hoogste ter wereld." },
+    { fr: "17 % des terres néerlandaises sont sous le niveau de la mer, gagnées sur l'océan.", nl: "17% van het Nederlandse land ligt onder zeeniveau, gewonnen op de oceaan." },
+    { fr: "Le Rietveld Schröderhuis à Utrecht est le seul bâtiment De Stijl classé au patrimoine mondial UNESCO.", nl: "Het Rietveld Schröderhuis in Utrecht is het enige De Stijl-gebouw op de UNESCO Werelderfgoedlijst." },
+    { fr: "Les Pays-Bas sont le 2ème exportateur mondial de produits agricoles après les États-Unis.", nl: "Nederland is na de Verenigde Staten de op één na grootste landbouwexporteur ter wereld." },
+    { fr: "Utrecht abrite l'Université d'Utrecht, fondée en 1636, l'une des plus anciennes des Pays-Bas.", nl: "Utrecht huisvest de Universiteit Utrecht, opgericht in 1636, een van de oudste van Nederland." },
+    { fr: "Le canal de l'Oudegracht a été creusé au XIIe siècle pour relier le Rhin au port d'Utrecht.", nl: "De Oudegracht werd in de 12e eeuw gegraven om de Rijn met de haven van Utrecht te verbinden." },
+    { fr: "La tradition du Sinterklaas arrive aux Pays-Bas par bateau depuis l'Espagne chaque 5 décembre.", nl: "Sinterklaas komt elk jaar op 5 december per boot vanuit Spanje naar Nederland." },
+    { fr: "Les stroopwafels ont été inventés à Gouda vers 1810 par le boulanger Gerard Kamphuisen.", nl: "Stroopwafels werden rond 1810 in Gouda uitgevonden door bakker Gerard Kamphuisen." },
+    { fr: "Amsterdam compte plus de 1 200 ponts — plus que Venise et ses 400 ponts.", nl: "Amsterdam heeft meer dan 1.200 bruggen — meer dan Venetië met zijn 400 bruggen." },
+    { fr: "Le Rijksmuseum d'Amsterdam expose 8 000 œuvres parmi son million d'objets.", nl: "Het Rijksmuseum in Amsterdam toont 8.000 werken uit een collectie van een miljoen objecten." },
+    { fr: "Vermeer peignit La Jeune Fille à la Perle vers 1665 avec du lapis-lazuli, pigment plus précieux que l'or.", nl: "Vermeer schilderde Meisje met de Parel rond 1665 met lapis lazuli, een pigment kostbaarder dan goud." },
+    { fr: "La maison d'Anne Frank à Amsterdam attire 1,3 million de visiteurs par an.", nl: "Het Anne Frank Huis in Amsterdam trekt jaarlijks 1,3 miljoen bezoekers." },
+    { fr: "Paris et Utrecht sont à environ 500 km — 4h30 en TGV + Thalys.", nl: "Parijs en Utrecht liggen ongeveer 500 km uit elkaar — 4u30 met TGV + Thalys." },
+    { fr: "Le Tour de France a eu un Grand Départ à Utrecht en 2015.", nl: "De Tour de France had in 2015 zijn Grand Départ in Utrecht." },
+    { fr: "Le peintre Mondrian, né à Amersfoort (près d'Utrecht), inventa le néoplasticisme en 1917.", nl: "De schilder Mondriaan, geboren in Amersfoort (bij Utrecht), vond in 1917 het neoplasticisme uit." },
+    { fr: "Les Néerlandais mesurent en moyenne 182,9 cm — le peuple le plus grand au monde.", nl: "Nederlanders zijn gemiddeld 182,9 cm lang — het grootste volk ter wereld." },
+    { fr: "Utrecht possède le plus grand parking vélos souterrain du monde (12 500 places) sous la gare.", nl: "Utrecht heeft de grootste ondergrondse fietsenstalling ter wereld (12.500 plekken) onder het station." },
+    { fr: "La Fête du Roi (Koningsdag) transforme les Pays-Bas en immense marché aux puces orange chaque 27 avril.", nl: "Koningsdag verandert Nederland elk jaar op 27 april in een enorme oranje vrijmarkt." },
+    { fr: "Rembrandt vendit La Ronde de Nuit en 1642 pour une somme modeste — ignorée de son vivant.", nl: "Rembrandt verkocht De Nachtwacht in 1642 voor een bescheiden bedrag — tijdens zijn leven genegeerd." },
+    { fr: "L'hagelslag (vermicelles de chocolat sur pain beurré) est un petit-déjeuner typiquement néerlandais.", nl: "Hagelslag op beboterd brood is een typisch Nederlands ontbijt." },
+    { fr: "Le moulin à vent le plus ancien des Pays-Bas date de 1450, à Zeddam.", nl: "De oudste windmolen van Nederland dateert uit 1450 en staat in Zeddam." },
+    { fr: "Utrecht fut l'une des premières villes européennes à adopter un réseau de tramway électrique.", nl: "Utrecht was een van de eerste Europese steden met een elektrisch tramnet." },
+    { fr: "Le festival Le Guess Who? à Utrecht est l'un des plus importants festivals de musique des Pays-Bas.", nl: "Le Guess Who? in Utrecht is een van de belangrijkste muziekfestivals van Nederland." },
+    { fr: "Les Pays-Bas ont légalisé le mariage homosexuel en 2001, premiers au monde à le faire.", nl: "Nederland legaliseerde het homohuwelijk in 2001, als eerste land ter wereld." },
+    { fr: "Heineken, fondée à Amsterdam en 1864, est l'une des plus grandes brasseries mondiales.", nl: "Heineken, opgericht in Amsterdam in 1864, is een van de grootste brouwerijen ter wereld." },
+    { fr: "La nuit la plus courte à Utrecht dure environ 6 heures en juin — le soleil se couche très tard en été.", nl: "De kortste nacht in Utrecht duurt in juni ongeveer 6 uur — in de zomer gaat de zon heel laat onder." },
+    { fr: "Les bulbes de tulipes peuvent être mangés : pendant la famine de 1944-45, les Néerlandais en ont survécu.", nl: "Tulpenbollen zijn eetbaar: tijdens de Hongerwinter van 1944-45 overleefden Nederlanders er op." },
+    { fr: "Le Centraal Museum d'Utrecht possède la plus grande collection d'œuvres de Rietveld au monde.", nl: "Het Centraal Museum in Utrecht heeft de grootste Rietveld-collectie ter wereld." },
+    { fr: "La spécialité culinaire d'Utrecht est le 'Utrechtse spritsen', un biscuit au beurre en forme d'étoile.", nl: "De culinaire specialiteit van Utrecht is de Utrechtse sprits, een stervormig boterkoekje." },
+    { fr: "Le pont Gaardbrug sur l'Oudegracht date du Moyen Âge et est l'un des plus anciens ponts d'Utrecht.", nl: "De Gaardbrug over de Oudegracht stamt uit de middeleeuwen en is een van de oudste bruggen van Utrecht." },
+    { fr: "Utrecht organise chaque année l'une des plus grandes foires du livre des Pays-Bas.", nl: "Utrecht organiseert elk jaar een van de grootste boekenbeurzen van Nederland." },
+    { fr: "Le Dom d'Utrecht possède l'un des plus grands carillons des Pays-Bas avec ses 50 cloches.", nl: "De Domtoren van Utrecht heeft een van de grootste beiaarden van Nederland met 50 klokken." },
+    { fr: "La ville d'Utrecht tire son nom du latin 'ultra trajectum' — au-delà du gué.", nl: "De naam Utrecht komt uit het Latijn 'ultra trajectum' — voorbij de doorwaadbare plaats." },
+    { fr: "Le quartier de Lombok à Utrecht est réputé pour sa diversité culturelle et sa cuisine du monde.", nl: "De Utrechtse wijk Lombok staat bekend om haar culturele diversiteit en wereldkeuken." },
+    { fr: "La bière Grolsch est brassée à Enschede, mais les cafés d'Utrecht en servent depuis des siècles.", nl: "Grolsch wordt gebrouwen in Enschede, maar de Utrechtse cafés schenken het al eeuwen." }
 ];
 
 // ---- GÉNÉRATEUR DE POÈME ----
@@ -1163,7 +1376,15 @@ function showPoem() {
                 renderFrenchLines(p.fr);
                 document.getElementById('trBox').classList.add('show');
                 setTimeout(function() {
-                    document.getElementById('anecdote').textContent = p.an;
+                    var anEl = document.getElementById('anecdote');
+                    // p.an est maintenant un objet {fr, nl}
+                    if (p.an && typeof p.an === 'object') {
+                        anEl.innerHTML =
+                            '<div class="an-nl">' + p.an.nl + '</div>' +
+                            '<div class="an-fr">' + p.an.fr + '</div>';
+                    } else {
+                        anEl.textContent = p.an || '';
+                    }
                     document.getElementById('anBox').classList.add('show');
                     typing = false;
                     updateHeartButton();
@@ -1315,11 +1536,110 @@ function showToast(msg) {
 
 document.getElementById('heartBtn').addEventListener('click', toggleSavePoem);
 
+// ============================================================
+// MODALE ANTHOLOGIE — onglet "Mes poèmes sauvegardés"
+// ============================================================
+function renderAnthology() {
+    var anth = getAnthology();
+    var body = document.getElementById('modalBody');
+    document.getElementById('modalCount').textContent = anth.length;
+    document.getElementById('bookCount').textContent = anth.length;
+
+    if (anth.length === 0) {
+        body.innerHTML =
+            '<div class="modal-empty">' +
+            '<span class="empty-icon">💌</span>' +
+            'Nog geen bewaarde gedichten.<br>' +
+            'Aucun poème encore gardé.<br><br>' +
+            '<span style="font-size:12px;opacity:0.6">Tik op 🤍 om een gedicht te bewaren.<br>Tape sur 🤍 pour en garder un.</span>' +
+            '</div>';
+        return;
+    }
+
+    // Tri : plus récent en premier
+    var sorted = anth.slice().sort(function(a, b) {
+        return (b.savedAt || '').localeCompare(a.savedAt || '');
+    });
+
+    body.innerHTML = sorted.map(function(p, idx) {
+        var d = p.savedAt ? new Date(p.savedAt) : null;
+        var dateStr = d ? d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+        var safeNl = (p.nl || '').replace(/</g, '&lt;');
+        var safeFr = (p.fr || '').replace(/</g, '&lt;');
+        return (
+            '<div class="saved-card">' +
+                '<button class="saved-remove" data-nl="' + encodeURIComponent(p.nl) + '" title="Supprimer">🗑</button>' +
+                '<div class="saved-nl">' + safeNl + '</div>' +
+                '<div class="saved-fr">' + safeFr + '</div>' +
+                (dateStr ? '<div class="saved-date">' + dateStr + '</div>' : '') +
+            '</div>'
+        );
+    }).join('');
+
+    // Bind remove buttons
+    body.querySelectorAll('.saved-remove').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var nlKey = decodeURIComponent(btn.getAttribute('data-nl'));
+            var a = getAnthology();
+            var i = a.findIndex(function(x) { return x.nl === nlKey; });
+            if (i >= 0) {
+                a.splice(i, 1);
+                localStorage.setItem('ellen_anthology', JSON.stringify(a));
+                renderAnthology();
+                updateHeartButton();
+                showToast('💔 verwijderd · retiré');
+            }
+        });
+    });
+}
+
+function openModal() {
+    renderAnthology();
+    document.getElementById('modal').classList.add('show');
+}
+function closeModal() {
+    document.getElementById('modal').classList.remove('show');
+}
+
+document.getElementById('bookBtn').addEventListener('click', openModal);
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target.id === 'modal') closeModal();
+});
+
+// Mise à jour du compteur du bouton livre après chaque save
+var _origToggle = toggleSavePoem;
+toggleSavePoem = function() {
+    _origToggle();
+    document.getElementById('bookCount').textContent = getAnthology().length;
+};
+document.getElementById('heartBtn').removeEventListener('click', _origToggle);
+document.getElementById('heartBtn').addEventListener('click', toggleSavePoem);
+document.getElementById('bookCount').textContent = getAnthology().length;
+
+// ============================================================
+// RÉGÉNÉRATION FIABLE des poèmes si jour changé
+// (fallback si l'utilisateur n'ouvre pas à minuit pile)
+// ============================================================
+var lastSeedCheck = dailySeed();
+function checkDayChange() {
+    var current = dailySeed();
+    if (current !== lastSeedCheck) {
+        lastSeedCheck = current;
+        poems = generateDailyPoems();
+        poemIdx = 0;
+        updateStreak();
+        console.log('🌅 Nouveau jour détecté — poèmes régénérés');
+    }
+}
+
 // Démarrage
 updateStreak();
 updateClock();
 setInterval(updateClock, 1000);
 setInterval(rotateCarousel, 5000);
+setInterval(checkDayChange, 60000); // check chaque minute
 </script>
 </body>
 </html>
